@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=390, initial-scale=1.0">
+    <title>Лента</title>
+    <link rel="stylesheet" href="/rto-forecast_first_lab_static/styles.css">
+</head>
+<body>
+    <div class="mobile-wrapper">
+
+        <div class="status-bar light-text">
+            <span>09:41</span>
+            <span>📶 🔋</span>
+        </div>
+
+
+        <div class="content feed-container">
+            <video class="feed-video" poster="{{ service.image_key }}" autoplay loop muted playsinline>
+                <source src="{{ service.video_key }}" type="video/mp4">
+            </video>
+
+
+            <div class="side-actions">
+                <div class="action-btn">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    <span>142</span>
+                </div>
+                <div class="action-btn">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                </div>
+            </div>
+
+
+            <div class="feed-overlay">
+                <h2 class="feed-title">{{ service.title }}</h2>
+                <div class="tag-group">
+                    <span class="pill-tag">RTO: {{ service.estimated_time }} мин</span>
+                    <span class="pill-tag dark">RPO: {{ service.rpo_time }} мин</span>
+                    <span class="pill-tag dark">${{ service.cost }}/мес</span>
+                </div>
+                <p class="feed-desc">{{ service.description }}</p>
+
+                <a href="/feed?id={{ service.id }}&next=True" class="btn-next-arrow">➔</a>
+            </div>
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="/feed" class="nav-item active">
+                <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                <span>Лента</span>
+            </a>
+            <a href="/draft" class="nav-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                <span>Добавление</span>
+            </a>
+            <a href="/catalog" class="nav-item">
+                <svg viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+                <span>Плитка</span>
+            </a>
+        </nav>
+    </div>
+</body>
+</html>

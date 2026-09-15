@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=390, initial-scale=1.0">
+    <title>Каталог решений</title>
+    <link rel="stylesheet" href="/rto-forecast_first_lab_static/styles.css">
+</head>
+<body>
+    <div class="mobile-wrapper">
+        <div class="status-bar dark-text">
+            <span>09:41</span>
+            <span>📶 🔋</span>
+        </div>
+
+        <div class="content">
+            <h1 class="page-title">Каталог решений</h1>
+
+            <form class="search-bar" action="/catalog" method="get">
+                <input type="text" name="query" class="search-input" placeholder="Поиск..." value="{{ query }}">
+                <button type="submit" class="btn-search">Найти</button>
+            </form>
+
+            <div class="grid-container">
+                {% for s in services %}
+                <div class="card-item">
+                    <img src="{{ s.image_key }}" alt="{{ s.title }}" class="card-img">
+                    <div class="card-title">{{ s.title }}</div>
+                    <span class="pill-tag">RTO: {{ s.estimated_time }} мин</span>
+                    <div class="card-price">${{ s.cost }}/мес</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <nav class="bottom-nav">
+            <a href="/feed" class="nav-item">
+                <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                <span>Лента</span>
+            </a>
+            <a href="/draft" class="nav-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                <span>Добавление</span>
+            </a>
+            <a href="/catalog" class="nav-item active">
+                <svg viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+                <span>Плитка</span>
+            </a>
+        </nav>
+    </div>
+</body>
+</html>
